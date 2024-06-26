@@ -1,0 +1,32 @@
+const Recipe = require('../models/recipeModel');
+
+// GET endpoint to fetch all recipes
+const getRecipes = async (req, res) => {
+    try {
+        const recipes = await Recipe.find(); // Fetch recipes from MongoDB
+        res.json(recipes); // Send fetched data as JSON response
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+// GET endpoint to fetch recipe by id
+const getRecipeById = async (req, res) => {
+    const { recipeId } = req.params;
+
+    try {
+        const recipe = await Recipe.findById(recipeId);
+        if (!recipe) {
+            return res.status(404).json({ message: 'Recipe not found' });
+        }
+        res.json(recipe);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+
+module.exports = {
+    getRecipes,
+    getRecipeById,
+};
