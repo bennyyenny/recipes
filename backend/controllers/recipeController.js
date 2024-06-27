@@ -25,8 +25,20 @@ const getRecipeById = async (req, res) => {
     }
 };
 
+// Controller function to save a recipe to MongoDB
+const saveRecipe = async (req, res) => {
+    try {
+        const newRecipe = new Recipe(req.body);
+        console.log(req.body, "hello");
+        const savedRecipe = await newRecipe.save();
+        res.status(201).json(savedRecipe);
+    } catch (error) {
+        res.status(500).json({ message: 'Error saving recipe', error });
+    }
+};
 
 module.exports = {
     getRecipes,
     getRecipeById,
+    saveRecipe,
 };

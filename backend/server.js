@@ -10,6 +10,7 @@ require('dotenv').config();
 
 // Enable CORS
 app.use(cors());
+app.use(express.json());
 
 // GET endpoint to generate recipe based on prompt
 app.get('/generate-recipe', async (req, res) => {
@@ -42,6 +43,8 @@ app.post('/recipes', async (req, res) => {
       res.status(500).json({ message: error.message });
     }
   });
+
+app.post('/save-recipe', recipeController.saveRecipe);
 
 mongoose.connect(process.env.DB_URI).then(() => {
     app.listen(port, () => {

@@ -10,7 +10,8 @@ function App() {
         <Router>
             <div>
                 <Routes>
-                    <Route path="/" element={<Home />} />
+                    {/* <Route path="/" element={<Home />} /> */}
+                    <Route path="/" element={<GenerateRecipe />} />
                     <Route path="/generate-recipe" element={<GenerateRecipe />} />
                     <Route path="/view-recipes" element={<ViewRecipes />} />
                     <Route path="/recipes/:recipeId" element={<Recipe />} />

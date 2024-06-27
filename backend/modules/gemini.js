@@ -19,7 +19,7 @@ async function connect(input) {
     try {
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-        const prompt = `Generate a recipe based on this prompt: ${input}. Please format and send back like this: {"name":"", "description":"", "ingredients":[list of ingredients as strings], "nutritional_facts":[{fact, amount}], "instructions":[list of instructions as strings], "tips":[list of tips as strings]}`;
+        const prompt = `Generate a recipe based on this prompt: ${input}. Please format and send back like this: {"name":"", "description":"", "ingredients":[list of ingredients as strings], "nutritional_facts":[{"fact":"", "amount":""}], "instructions":[list of instructions as strings], "tips":[list of tips as strings]}`;
 
         const result = await model.generateContent(prompt);
         const response = await result.response;

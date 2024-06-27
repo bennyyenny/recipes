@@ -8,22 +8,22 @@ const DisplayRecipe = ({ recipe }) => {
     <div className="recipe-display">
       {recipe ? (
         <div>
-          <h2>{recipe.name}</h2>
+          <h2 className="text-xl font-bold">{recipe.name}</h2>
           <p>{recipe.description}</p>
-          <h3>Ingredients:</h3>
+          <h3 className="text-lg font-bold">Ingredients:</h3>
           <ul>
             {recipe.ingredients.map((ingredient, index) => (
               <li key={index}>{ingredient}</li>
             ))}
           </ul>
-          <h3>Instructions:</h3>
-          <ol>
+          <h3 className="text-lg font-bold">Instructions:</h3>
+          <ol className="list-decimal">
             {recipe.instructions.map((instruction, index) => (
               <li key={index}>{instruction}</li>
             ))}
           </ol>
-          <h3>Tips:</h3>
-          <ul>
+          <h3 className="text-lg font-bold">Tips:</h3>
+          <ul className="list-disc">
             {recipe.tips.map((tip, index) => (
               <li key={index}>{tip}</li>
             ))}
