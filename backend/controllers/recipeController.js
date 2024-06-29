@@ -4,6 +4,7 @@ const Recipe = require('../models/recipeModel');
 const getRecipes = async (req, res) => {
     try {
         const recipes = await Recipe.find(); // Fetch recipes from MongoDB
+        console.log(recipes);
         res.json(recipes); // Send fetched data as JSON response
     } catch (error) {
         res.status(500).json({ message: error.message });
