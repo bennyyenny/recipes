@@ -15,7 +15,7 @@ const GenerateRecipe = () => {
   const handleGenerate = async (prompt) => {
     try {
       const response = await axios.get(
-        `/generate-recipe`,
+        `https://recipes-ten-eta.vercel.app/generate-recipe`,
         {
           params: { prompt: prompt }, // Pass prompt as query parameter
         }

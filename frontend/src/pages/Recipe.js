@@ -12,7 +12,7 @@ const Recipe = () => {
     const fetchRecipe = async () => {
       try {
         const response = await axios.get(
-          `/recipes/${recipeId}`
+          `https://recipes-ten-eta.vercel.app/recipes/${recipeId}`
         );
         setRecipe(response.data);
       } catch (error) {

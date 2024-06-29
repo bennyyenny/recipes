@@ -9,7 +9,7 @@ const ViewRecipes = () => {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const response = await axios.get(`/getRecipes`);
+        const response = await axios.get(`https://recipes-ten-eta.vercel.app/getRecipes`);
         setRecipes(response.data); // Set fetched/generated recipe data to state
       } catch (error) {
         console.error("Error generating recipe:", error);
