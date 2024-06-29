@@ -31,7 +31,7 @@ const GenerateRecipe = () => {
     console.log("Recipe to be saved:", recipe); // Log the recipe object
     try {
       const response = await axios.post(
-        "/save-recipe",
+        "https://recipes-ten-eta.vercel.app/save-recipe",
         recipe,
         {
           headers: {
