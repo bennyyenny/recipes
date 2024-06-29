@@ -15,7 +15,7 @@ const GenerateRecipe = () => {
   const handleGenerate = async (prompt) => {
     try {
       const response = await axios.get(
-        `http://localhost:5001/generate-recipe`,
+        `/generate-recipe`,
         {
           params: { prompt: prompt }, // Pass prompt as query parameter
         }
