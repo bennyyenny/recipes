@@ -12,10 +12,6 @@ require('dotenv').config();
 app.use(cors());
 app.use(express.json());
 
-app.get('/', async (req,res) => {
-    res.send('hello');
-})
-
 // GET endpoint to generate recipe based on prompt
 app.get('/generate-recipe', async (req, res) => {
     try {
