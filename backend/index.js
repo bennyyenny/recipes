@@ -15,20 +15,20 @@ app.use(express.json());
 mongoose.connect(process.env.MONGODB_URI);
 
 // GET endpoint to generate recipe based on prompt
-app.get('/generate-recipe', async (req, res) => {
+app.post('/generate-recipe', async (req, res) => {
     try {
-        const { prompt } = req.query; // Extract prompt from query parameters
-        
-        // Assuming gemini.connect() needs the prompt parameter
+        const { prompt } = req.body; // Extract prompt from request body
+
+        // Call gemini.connect() to generate recipe based on prompt
         const recipe = await gemini.connect(prompt);
-        
-        res.send(recipe); // Send generated recipe back to frontend
+
+        res.json(recipe); // Send generated recipe back to frontend
     } catch (error) {
         console.error('Error:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
-  
+
 app.get('/getRecipes', recipeController.getRecipes);
 
 app.get('/recipes/:recipeId', recipeController.getRecipeById);
