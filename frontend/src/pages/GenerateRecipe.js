@@ -53,9 +53,9 @@ const GenerateRecipe = () => {
         <h1 className="text-xl font-bold mb-4 text-center">Generate Recipe</h1>
         <section>
           <div className="flex justify-center gap-10 py-10 md:gap-20">
-            <img src={saladSVG} alt="Salad SVG" className="w-1/4 md:w-auto"/>
-            <img src={mainSVG} alt="Main SVG" className="w-1/4 md:w-auto"/>
-            <img src={cakeSVG} alt="Cake SVG" className="w-1/4 md:w-auto"/>
+            <img src={saladSVG} alt="Salad SVG" className="w-1/4 md:w-auto" />
+            <img src={mainSVG} alt="Main SVG" className="w-1/4 md:w-auto" />
+            <img src={cakeSVG} alt="Cake SVG" className="w-1/4 md:w-auto" />
           </div>
           <GenerateRecipeForm onGenerate={handleGenerate} />
         </section>
@@ -63,7 +63,9 @@ const GenerateRecipe = () => {
         {recipe && (
           <div>
             <DisplayRecipe recipe={recipe} />
-            {!isRecipeSaved && (
+            {isRecipeSaved ? (
+              <p>Recipe saved successfully!</p>
+            ) : (
               <button
                 className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
                 onClick={handleSave}
