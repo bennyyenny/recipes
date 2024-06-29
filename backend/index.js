@@ -12,6 +12,8 @@ require('dotenv').config();
 app.use(cors());
 app.use(express.json());
 
+mongoose.connect(process.env.MONGODB_URI);
+
 // GET endpoint to generate recipe based on prompt
 app.get('/generate-recipe', async (req, res) => {
     try {
@@ -46,10 +48,6 @@ app.post('/recipes', async (req, res) => {
 
 app.post('/save-recipe', recipeController.saveRecipe);
 
-mongoose.connect(process.env.MONGODB_URI).then(() => {
-    app.listen(port, () => {
-        console.log(`Listening on port ${port}.`);
-    });
-}).catch(err => {
-    console.log(err);
-})
+app.listen(port, () => {
+    console.log(`Listening on port ${port}.`);
+});
