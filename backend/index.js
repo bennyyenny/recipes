@@ -46,7 +46,7 @@ app.post('/recipes', async (req, res) => {
 
 app.post('/save-recipe', recipeController.saveRecipe);
 
-mongoose.connect(process.env.DB_URI).then(() => {
+mongoose.connect(process.env.MONGODB_URI).then(() => {
     app.listen(port, () => {
         console.log(`Listening on port ${port}.`);
     });
