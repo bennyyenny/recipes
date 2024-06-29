@@ -9,12 +9,7 @@ const port = process.env.PORT || 5001;
 require('dotenv').config();
 
 // Enable CORS
-// Enable CORS
-app.use(cors({
-    origin: 'https://recipes-frontend-five.vercel.app', // Allow requests from this origin
-    methods: ['GET', 'POST'], // Allow only specific methods
-    credentials: true, // Enable credentials (e.g., cookies, authorization headers)
-}));
+app.use(cors());
 app.use(express.json());
 
 mongoose.connect(process.env.MONGODB_URI);
