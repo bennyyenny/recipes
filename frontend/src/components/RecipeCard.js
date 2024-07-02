@@ -6,13 +6,17 @@ import { Link } from "react-router-dom";
 const RecipeCard = ({ recipe }) => {
 
     const handleDelete = async () => {
-        alert("deleted!");
         try {
             const response = await axios.delete(`https://recipes-ten-eta.vercel.app/delete-recipe/${recipe._id}`);
+    
+            if (response.status === 200) {
+                window.location.reload();
+            }
         } catch (error) {
             console.error("Error deleting recipe:", error);
+            alert("An error occurred while deleting the recipe.");
         }
-    }
+    };
 
   return (
     <div className="border-2 p-4 rounded-lg">
