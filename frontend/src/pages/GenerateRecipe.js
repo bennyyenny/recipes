@@ -8,11 +8,17 @@ import mainSVG from "../svg/main.svg";
 import cakeSVG from "../svg/cake.svg";
 
 const GenerateRecipe = () => {
-  const [recipe, setRecipe] = useState(null); // State to store recipe data
+  const [recipe, setRecipe] = useState(null);
   const [isRecipeSaved, setIsRecipeSaved] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [noRecipeFound, setNoRecipeFound] = useState(null);
 
   // Function to handle generation of recipe based on user input (prompt)
   const handleGenerate = async (prompt) => {
+    setIsLoading(true);
+    setRecipe(null);
+    setNoRecipeFound(null);
+    setIsRecipeSaved(false);
     try {
       const response = await axios.get(
         `https://recipes-ten-eta.vercel.app/generate-recipe`,
@@ -20,9 +26,13 @@ const GenerateRecipe = () => {
           params: { prompt: prompt }, // Pass prompt as query parameter
         }
       );
-      setRecipe(response.data); // Set fetched/generated recipe data to state
+      setRecipe(response.data);
+      setNoRecipeFound(false);
     } catch (error) {
       console.error("Error generating recipe:", error);
+      setNoRecipeFound(true);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -39,7 +49,6 @@ const GenerateRecipe = () => {
           },
         }
       );
-      alert("Recipe saved successfully!");
       setIsRecipeSaved(true); // Update state to indicate the recipe has been saved
     } catch (error) {
       console.error("Error saving recipe:", error);
@@ -60,6 +69,8 @@ const GenerateRecipe = () => {
           <GenerateRecipeForm onGenerate={handleGenerate} />
         </section>
 
+        {isLoading && <p>Loading recipe...</p>}
+        {noRecipeFound && <p>Couldn't find a recipe :( Please search for something else!</p>}
         {recipe && (
           <div>
             <DisplayRecipe recipe={recipe} />

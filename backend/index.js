@@ -48,6 +48,8 @@ app.post('/recipes', async (req, res) => {
 
 app.post('/save-recipe', recipeController.saveRecipe);
 
+app.delete('/delete-recipe', recipeController.deleteRecipe);
+
 app.listen(port, () => {
     console.log(`Listening on port ${port}.`);
 });
