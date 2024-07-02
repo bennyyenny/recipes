@@ -8,7 +8,7 @@ const RecipeCard = ({ recipe }) => {
     const handleDelete = async () => {
         alert("deleted!");
         try {
-            const response = await axios.post("https://recipes-ten-eta.vercel.app/delete-recipe", recipe);
+            const response = await axios.delete(`https://recipes-ten-eta.vercel.app/delete-recipe/${recipe._id}`);
         } catch (error) {
             console.error("Error deleting recipe:", error);
         }
